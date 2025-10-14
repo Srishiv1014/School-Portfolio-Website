@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #0059ff, #00c6ff);
+  color: white;
+  padding: 25px 60px;
+  text-align: center;
+  animation: slideDown 1s ease-out;
+}
+
+/* Navbar */
+nav {
+  background: #003c8f;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  display: inline-block;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background: #0059ff;
+}
+
+nav a.active {
+  background: #0059ff;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 160px 20px;
+  border-radius: 0 0 40px 40px;
+}
+
+.hero h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.3em;
+  background: rgba(0,0,0,0.4);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* General content */
+section.content, section.intro {
+  padding: 60px 80px;
+  background: white;
+  margin: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #0059ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Facilities */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.facility-card {
+  background: #f0f6ff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.facility-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.facility-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Services */
+.services-list {
+  list-style: none;
+  font-size: 1.1em;
+  line-height: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.services-list li:hover {
+  color: #0059ff;
+  transform: scale(1.03);
+  transition: 0.3s;
+}
+
+/* Footer */
+footer {
+  background: #003c8f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  section.content, section.intro {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  .hero h2 {
+    font-size: 2em;
+  }
+}
+
+/* Header Container with Logo */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.header-text h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.header-text p {
+  font-size: 1em;
+  color: #e6f3ff;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+  }
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+}
+/* ===== Team Section ===== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.team-card {
+  background: #f0f6ff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.team-card h3 {
+  color: #0059ff;
+  margin-bottom: 5px;
+}
+
+/* ===== Branches Section ===== */
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.branch-card {
+  background: #f8fcff;
+  border-left: 6px solid #0059ff;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.branch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+/* ===== Contact Page ===== */
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-info, .contact-form {
+  background: #f8fcff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-info:hover, .contact-form:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.contact-form h3, .contact-info h3 {
+  color: #0059ff;
+  margin-bottom: 15px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input, .contact-form textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.contact-form button {
+  background: #0059ff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #003c8f;
+}
+
+.map-container {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
