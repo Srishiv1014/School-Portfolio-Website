@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions - The Aryan International School</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { font-family: 'Poppins', sans-serif; background:#f5f7fb; margin:0; padding:0; }
+  header { background: linear-gradient(to right,#007BFF,#00BFFF); color:white; text-align:center; padding:30px 0; }
+  h1 { margin:0; font-size:2.2em; }
+  .admission-container { width:90%; max-width:700px; background:white; margin:40px auto; padding:30px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+  form { display:flex; flex-direction:column; gap:15px; }
+  label { font-weight:600; margin-bottom:5px; }
+  input, select, textarea { padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1em; width:100%; }
+  textarea { resize:vertical; }
+  button { background:linear-gradient(90deg,#007BFF,#00BFFF); color:white; border:none; padding:12px; border-radius:6px; font-size:1.1em; cursor:pointer; transition: background 0.3s ease; }
+  button:hover { background:linear-gradient(90deg,#0056b3,#0099cc); }
+  .success-message { color:green; text-align:center; margin-top:10px; display:none; }
+  .error-message { color:red; font-size:0.9em; display:none; margin-top:-10px; margin-bottom:10px; }
+  footer { text-align:center; padding:20px; background:#0b1a40; color:white; margin-top:40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admissions Open - The Aryan International School</h1>
+  <p>Fill out the form below to apply for admission</p>
+</header>
+
+<div class="admission-container">
+  <form id="admissionForm" action="https://formspree.io/f/mnnglvqz" method="POST">
+    <label for="studentName">Student's Full Name:</label>
+    <input type="text" id="studentName" name="Student Name" required>
+    <div class="error-message" id="errorName">Please enter student's name.</div>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="Date of Birth" required>
+    <div class="error-message" id="errorDOB">Please select a valid date.</div>
+
+    <label for="class">Applying for Class:</label>
+    <select id="class" name="Class" required>
+      <option value="">Select Class</option>
+      <option value="Nursery">Nursery</option>
+      <option value="KG">KG</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <div class="error-message" id="errorClass">Please select a class.</div>
+
+    <!-- ===== STREAM & SUBJECTS DYNAMIC LOGIC ===== -->
+    <div id="streamSection" style="display:none;">
+      <label for="stream">Select Stream:</label>
+      <select id="stream" name="Stream">
+        <option value="">Select Stream</option>
+        <option value="Science">Science</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Arts">Arts</option>
+      </select>
+      <div class="error-message" id="errorStream">Please select a stream.</div>
+    </div>
+
+    <div id="subjectsSection" style="display:none;">
+      <label>Choose Subjects (at least 3):</label>
+      <div id="subjectsContainer"></div>
+      <div class="error-message" id="errorSubjects">Please select at least 3 subjects.</div>
+    </div>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="Gender" required>
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <div class="error-message" id="errorGender">Please select gender.</div>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="Address" rows="3" required></textarea>
+    <div class="error-message" id="errorAddress">Please enter address.</div>
+
+    <label for="parentName">Parent/Guardian Name:</label>
+    <input type="text" id="parentName" name="Parent Name" required>
+    <div class="error-message" id="errorParent">Please enter parent/guardian name.</div>
+
+    <label for="phone">Contact Number:</label>
+    <input type="tel" id="phone" name="Phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+    <div class="error-message" id="errorPhone">Enter a valid 10-digit phone number.</div>
+
+    <label for="email">Email ID:</label>
+    <input type="email" id="email" name="Email" required>
+    <div class="error-message" id="errorEmail">Enter a valid email address.</div>
+
+    <label for="previousSchool">Previous School (if any):</label>
+    <input type="text" id="previousSchool" name="Previous School">
+
+    <label for="message">Additional Message:</label>
+    <textarea id="message" name="Message" rows="3"></textarea>
+
+    <button type="submit">Submit Application</button>
+    <p class="success-message" id="successMessage">Your admission form has been submitted successfully!</p>
+  </form>
+</div>
+
+<a href="https://whatsapp.com/channel/0029Vb5onKjL7UVWXZeh9Y3e" target="_blank" class="whatsapp-float">
+  <img src="icons8-whatsapp.gif" alt="Chat on WhatsApp">
+</a>
+
+  <footer class="footer">
+  <p>© 2025 Aryan International School, Mughalsarai | All Rights Reserved</p>
+  <p>Designed & Developed by <b><span class="blink">SRIJAN</span></b></p>
+</footer>
+
+<script>
+  const form = document.getElementById('admissionForm');
+  const classSelect = document.getElementById('class');
+  const streamSection = document.getElementById('streamSection');
+  const streamSelect = document.getElementById('stream');
+  const subjectsSection = document.getElementById('subjectsSection');
+  const subjectsContainer = document.getElementById('subjectsContainer');
+  const streamSubjects = {
+    Science: ['Physics','Chemistry','Biology','Mathematics','Computer Science'],
+    Commerce: ['Accountancy','Business Studies','Economics','Mathematics','Informatics'],
+    Arts: ['History','Geography','Political Science','Sociology','Psychology']
+  };
+
+  // Show/hide stream section for classes 11 & 12
+  classSelect.addEventListener('change', () => {
+    const selectedClass = parseInt(classSelect.value);
+    if(selectedClass >= 11){
+      streamSection.style.display = 'block';
+    } else {
+      streamSection.style.display = 'none';
+      subjectsSection.style.display = 'none';
+      streamSelect.value='';
+      subjectsContainer.innerHTML='';
+    }
+  });
+
+  // Populate subjects based on stream
+  streamSelect.addEventListener('change', () => {
+    const selectedStream = streamSelect.value;
+    subjectsContainer.innerHTML='';
+    if(selectedStream){
+      subjectsSection.style.display='block';
+      streamSubjects[selectedStream].forEach(subject=>{
+        const checkbox = document.createElement('input');
+        checkbox.type='checkbox'; checkbox.name='Subjects'; checkbox.value=subject; checkbox.id=subject;
+
+        const label = document.createElement('label'); label.htmlFor=subject; label.textContent=subject; label.style.marginRight="10px";
+
+        const div = document.createElement('div'); div.style.marginBottom="5px";
+        div.appendChild(checkbox); div.appendChild(label);
+        subjectsContainer.appendChild(div);
+      });
+    } else {
+      subjectsSection.style.display='none';
+    }
+  });
+
+  // ===== FORM VALIDATION =====
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let valid=true;
+
+    // Helper function to show/hide error
+    function toggleError(id, condition){ 
+      document.getElementById(id).style.display = condition ? 'block' : 'none';
+      return !condition;
+    }
+
+    valid &= toggleError('errorName', document.getElementById('studentName').value.trim()==='');
+    valid &= toggleError('errorDOB', document.getElementById('dob').value==='');
+    valid &= toggleError('errorClass', classSelect.value==='');
+    valid &= toggleError('errorGender', document.getElementById('gender').value==='');
+    valid &= toggleError('errorAddress', document.getElementById('address').value.trim()==='');
+    valid &= toggleError('errorParent', document.getElementById('parentName').value.trim()==='');
+    const phoneVal=document.getElementById('phone').value.trim();
+    valid &= toggleError('errorPhone', !/^\d{10}$/.test(phoneVal));
+    const emailVal=document.getElementById('email').value.trim();
+    valid &= toggleError('errorEmail', !/^\S+@\S+\.\S+$/.test(emailVal));
+
+    // Stream & subjects validation for higher classes
+    if(parseInt(classSelect.value)>=11){
+      valid &= toggleError('errorStream', streamSelect.value==='');
+      const selectedSubjects = document.querySelectorAll('#subjectsContainer input[type="checkbox"]:checked');
+      valid &= toggleError('errorSubjects', selectedSubjects.length<3);
+    }
+
+    if(valid){
+      form.submit(); // submit to Formspree
+      document.getElementById('successMessage').style.display='block';
+    }
+  });
+</script>
+</body>
+</html>
