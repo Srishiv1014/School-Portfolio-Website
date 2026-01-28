@@ -270,6 +270,10 @@ footer {
   align-items: start;
 }
 
+.contact-info p{
+  text-align: center;
+}
+
 .contact-info, .contact-form {
   background: #f8fcff;
   border-radius: 12px;
@@ -647,5 +651,6 @@ body {
   cursor: pointer;
   font-size: 1.3em;
 }
+
 
 
